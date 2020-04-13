@@ -9,10 +9,8 @@ class ParseController extends Controller
         $myfile = fopen("data.docx", "r") or die("Unable to open file!");
         $data = fread($myfile,filesize("data.docx"));
         $dataArr =explode('.', $data);
-        echo "<pre>";
-        
-       foreach($dataArr as $d)
-        DB::table('parsed_data')->insert(['parsed_vale'=>$d]);
+       foreach($dataArr as $value)
+        DB::table('parsed_data')->insert(['parsed_vale'=>$value]);
         fclose($myfile);
         echo "Data inserted successfully after parsing";
         
